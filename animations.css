@@ -1,0 +1,63 @@
+:root{--ease-premium:cubic-bezier(.22,1,.36,1);--ease-soft:cubic-bezier(.4,0,.2,1)}
+html.js-motion .motion-reveal{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease-premium),transform .75s var(--ease-premium);transition-delay:var(--motion-delay,0ms)}
+html.js-motion .motion-reveal.motion-visible{opacity:1;transform:none}
+html.js-motion .motion-scale{opacity:0;transform:scale(.965);transition:opacity .8s var(--ease-premium),transform .8s var(--ease-premium);transition-delay:var(--motion-delay,0ms)}
+html.js-motion .motion-scale.motion-visible{opacity:1;transform:none}
+.site-header{transition:box-shadow .35s ease,background-color .35s ease,transform .35s var(--ease-premium)}
+.site-header.motion-scrolled{box-shadow:0 12px 35px rgba(23,49,58,.08)}
+.site-header nav a{position:relative;transition:color .25s ease,transform .25s ease}
+.site-header nav a:not(.nav-chat)::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:2px;background:var(--terra);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease-premium)}
+.site-header nav a:hover::after,.site-header nav a.active::after{transform:scaleX(1);transform-origin:left}
+.btn,.nav-chat,.mysa-chat-launcher,.mysa-chat-form button,.mysa-chat-prompts button{transition:transform .25s var(--ease-premium),box-shadow .25s ease,filter .25s ease}
+.btn:hover,.nav-chat:hover{transform:translateY(-2px)}
+.btn:active,.nav-chat:active,.mysa-chat-form button:active{transform:translateY(0) scale(.97)}
+.card,.menu-card,.value-card,.kpi-card,.insight-card,.pitch-card{transition:transform .4s var(--ease-premium),box-shadow .4s ease,border-color .4s ease}
+.card:hover,.menu-card:hover,.value-card:hover,.kpi-card:hover,.insight-card:hover,.pitch-card:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(23,49,58,.1)}
+.card img,.menu-card img,.story-art img,.hero-art img{transition:transform .8s var(--ease-premium),filter .5s ease}
+.card:hover img,.menu-card:hover img,.story-art:hover img{transform:scale(1.035)}
+.hero-art{animation:mysaFloat 7s ease-in-out infinite}
+@keyframes mysaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.mysa-chat-launcher{animation:mysaLauncherIn .7s .65s var(--ease-premium) both}
+.mysa-chat-launcher:hover{transform:translateY(-4px) scale(1.04);box-shadow:0 16px 38px rgba(23,49,58,.2)}
+@keyframes mysaLauncherIn{from{opacity:0;transform:translateY(18px) scale(.75)}to{opacity:1;transform:none}}
+.mysa-chat-panel{transition:opacity .28s ease,transform .38s var(--ease-premium),visibility .28s!important}
+.mysa-msg{animation:mysaMessageIn .32s var(--ease-premium) both}
+@keyframes mysaMessageIn{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
+.chart-wrap,.chart-card,canvas{transition:opacity .65s ease,transform .65s var(--ease-premium)}
+.motion-visible canvas{animation:mysaChartIn .8s var(--ease-premium) both}
+@keyframes mysaChartIn{from{opacity:.25;transform:translateY(12px)}to{opacity:1;transform:none}}
+@media(max-width:800px){html.js-motion .motion-reveal{transform:translateY(18px);transition-duration:.55s}.hero-art{animation-duration:9s}.card:hover,.menu-card:hover,.value-card:hover,.kpi-card:hover,.insight-card:hover,.pitch-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}html.js-motion .motion-reveal,html.js-motion .motion-scale{opacity:1!important;transform:none!important}}
+
+/* Deluxe Motion Layer */
+@media (hover:hover) and (pointer:fine){
+  .tilt-ready{transform-style:preserve-3d;will-change:transform;transition:transform .22s var(--ease-premium),box-shadow .35s ease!important;position:relative;overflow:hidden}
+  .tilt-ready::before{content:"";position:absolute;inset:-1px;pointer-events:none;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.34),transparent 42%);opacity:0;transition:opacity .3s ease;z-index:1}
+  .tilt-ready:hover::before{opacity:1}
+  .magnetic{will-change:transform}
+}
+.btn,.nav-chat{position:relative;overflow:hidden;isolation:isolate}
+.btn::before,.nav-chat::before{content:"";position:absolute;top:-80%;left:-45%;width:34%;height:260%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);transform:rotate(18deg) translateX(-260%);transition:transform .75s var(--ease-premium);z-index:-1}
+.btn:hover::before,.nav-chat:hover::before{transform:rotate(18deg) translateX(520%)}
+.motion-ripple{position:fixed;border-radius:50%;pointer-events:none;width:12px;height:12px;background:rgba(212,103,67,.28);transform:translate(-50%,-50%) scale(0);animation:mysaRipple .62s ease-out forwards;z-index:9999}
+@keyframes mysaRipple{to{opacity:0;transform:translate(-50%,-50%) scale(7)}}
+main h1,main h2{position:relative}
+main h2.motion-visible::after{content:"";display:block;width:0;height:3px;border-radius:9px;background:linear-gradient(90deg,var(--terra),var(--orange));margin-top:.18em;animation:mysaAccent .75s .18s var(--ease-premium) forwards}
+@keyframes mysaAccent{to{width:54px}}
+body.mysa-leaving main{opacity:0;transform:translateY(10px);transition:opacity .22s ease,transform .22s ease}
+.add.mysa-added{animation:mysaAdd .46s var(--ease-premium)}
+@keyframes mysaAdd{45%{transform:scale(1.16) rotate(4deg)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){main h2.motion-visible::after{animation:none;width:54px}.motion-ripple{display:none}}
+
+/* MYSA ULTRA: ambient steam, scroll progress, and add-to-bag celebration */
+.mysa-scroll-progress{position:fixed;z-index:9999;top:0;left:0;width:100%;height:3px;pointer-events:none;transform-origin:left;transform:scaleX(var(--mysa-scroll,0));background:linear-gradient(90deg,#D46743,#E89B5B,#BFE7EA);box-shadow:0 1px 10px rgba(212,103,67,.35)}
+.mysa-steam-field{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.mysa-steam{position:absolute;bottom:4%;width:18px;height:90px;border-radius:50%;border-left:2px solid rgba(255,255,255,.38);filter:blur(.4px);opacity:0;animation:mysaSteam 5.5s ease-in-out infinite}
+.mysa-steam:nth-child(1){left:72%;animation-delay:0s}.mysa-steam:nth-child(2){left:77%;height:110px;animation-delay:1.4s}.mysa-steam:nth-child(3){left:82%;height:78px;animation-delay:2.8s}
+@keyframes mysaSteam{0%{opacity:0;transform:translate3d(0,18px,0) scale(.7) rotate(0)}25%{opacity:.5}65%{opacity:.22}100%{opacity:0;transform:translate3d(20px,-115px,0) scale(1.5) rotate(14deg)}}
+.mysa-add-burst{position:fixed;z-index:10000;pointer-events:none;width:9px;height:9px;border-radius:50%;background:#E89B5B;box-shadow:0 -24px #D46743,20px -14px #BFE7EA,24px 8px #FFEAD3,8px 23px #D46743,-15px 18px #E89B5B,-25px -2px #BFE7EA,-14px -20px #FFEAD3;animation:mysaBurst .62s cubic-bezier(.18,.8,.3,1) forwards}
+@keyframes mysaBurst{0%{opacity:1;transform:translate(-50%,-50%) scale(.25) rotate(0)}70%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.35) rotate(35deg)}}
+.mysa-cart-pulse{animation:mysaCartPulse .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes mysaCartPulse{0%,100%{transform:scale(1)}45%{transform:scale(1.16) rotate(-3deg)}}
+@media (max-width:700px),(hover:none){.mysa-steam:nth-child(3){display:none}.mysa-steam{opacity:.18}}
+@media (prefers-reduced-motion:reduce){.mysa-scroll-progress{display:none}.mysa-steam-field,.mysa-add-burst{display:none!important}.mysa-cart-pulse{animation:none!important}}
